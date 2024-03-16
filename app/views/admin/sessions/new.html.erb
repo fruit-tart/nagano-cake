@@ -24,13 +24,3 @@
 <% end %>
 
 <%= render "admin/shared/links" %>
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Show Mail and Password(Test)
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <p class="dropdown-item"><strong>Mail:</strong><%= ENV["TEST_GMAIL_ACCOUNT_NAME"] %>@gmail.com</p>
-    <p class="dropdown-item"><strong>Password:</strong><%= ENV["TEST_PASSWORD"] %></p>
-  </div>
-</div>
