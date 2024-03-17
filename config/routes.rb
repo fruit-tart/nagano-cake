@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     resources :items, only: [:index, :show]
     namespace :customers do
-      get   "/mypage"            => "#show"
+      get   "/my_page"            => "#show"
       get   "/information/edit"  => "#edit"
       patch "/information"       => "#update"
       get   "/unsubscribe"       => "#unsubscribe"
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
-    resources :orders_details, only: [:update]
+    resources :order_details, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
