@@ -5,6 +5,7 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = item_matched_id
+    @new_cart_item = CartItem.new
   end
 
   private
