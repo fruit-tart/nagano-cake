@@ -13,9 +13,7 @@
     <% @orders.each do |order| %>
       <tr align="center">
         <td>
-          <%= link_to (order) do %>
-            <%= order.created_at %>
-          <% end %>
+          <%= link_to order.created_at,admin_order_path(order) %>
         </td>
         <td><%= order.name %></td>
         <td>
