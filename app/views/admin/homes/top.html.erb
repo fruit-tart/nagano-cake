@@ -10,6 +10,19 @@
     </tr>
   </thead>
   <tbody>
+  <% @orders.each do |order| %>
+  <% order.order_details.each do |order_detail| %>
+  <tr align="center">
+    <td><%= link_to (order) do %>
+    <%= order.created_at %>
+    <% end %>
+    </td>
     
+    <td><%= order.name %></td>
+    <td><%= order_detail.amount %></td>
+    <td><%= order.status %></td>
+  <% end %>
+  <% end %>
+  </tr>
   </tbody>
 </table>
