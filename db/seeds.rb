@@ -15,6 +15,7 @@ TEST_POSTAL_CODE = ENV["TEST_POSTAL_CODE"]
 TEST_ADDRESS = ENV["TEST_ADDRESS"]
 TEST_TELEPHONE_NUMBER = ENV["TEST_TELEPHONE_NUMBER"]
 
+
 initial_customers = [
   {
     last_name: "一ノ瀬",
@@ -194,3 +195,9 @@ initial_addresses = [
   }
 ]
 Address.create(initial_addresses)
+
+Admin.create!(
+   email: 'nagano@gmail',
+   password: 'nagano',
+   password_confirmation: "nagano"
+)
