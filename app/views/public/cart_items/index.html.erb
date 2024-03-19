@@ -46,7 +46,7 @@
     <div class="col">
       <dl>
         <dt>合計金額</dt>
-        <dd><%= @cart_items.inject(0) {|sum, cart_item| sum + (price_include_tax(cart_item.item.price) * cart_item.amount) }.to_s(:delimited) %></dd>
+        <dd><%= account_cart_items(@cart_items).to_s(:delimited) %></dd>
       </dl>
     </div>
   </div>

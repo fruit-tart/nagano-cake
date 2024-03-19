@@ -1,2 +1,64 @@
 <h1>Public::Orders#confirm</h1>
 <p>Find me in app/views/public/orders/confirm.html.erb</p>
+
+<div class="container">
+  <h2>注文確認画面</h2>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">商品名</th>
+            <th scope="col">単価（税込）</th>
+            <th scope="col">数量</th>
+            <th scope="col">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= link_to item_path(cart_item.item_id) do %>
+                  <%= image_tag cart_item.item.image, size: "64x48" %>
+                  <%= cart_item.item.name %>
+                <% end %>
+              </td>
+              <td><%= price_include_tax(cart_item.item.price).to_s(:delimited) %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= (price_include_tax(cart_item.item.price) * cart_item.amount).to_s(:delimited) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+      <dl>
+        <dt>商品合計</dt>
+        <dd><%= account_cart_items(@cart_items).to_s(:delimited) %></dd>
+        <dt>配送料</dt>
+        <dd><%= @shipping_cost.to_s(:delimited) %></dd>
+        <dt>ご請求額</dt>
+        <dd><%= (account_cart_items(@cart_items) + @shipping_cost).to_s(:delimited) %></dd>
+      </dl>
+    </div>
+  </div>
+  <dl>
+    <dt>支払方法</dt>
+    <dd><%= @order.payment_method %></dd>
+    <dt>お届け先</dt>
+    <dd>
+      <p>〒<%= @order.postal_code %></p>
+      <p><%= @order.address %></p>
+      <p><%= @order.name %></p>
+    </dd>
+  </dl>
+  <%= form_with model: @order, url: orders_path(@order), method: :post, local: true do |form| %>
+    <%= form.hidden_field :postal_code, value: @order.postal_code %>
+    <%= form.hidden_field :address, value: @order.address %>
+    <%= form.hidden_field :name, value: @order.name %>
+    <%= form.hidden_field :shipping_cost, value: @shipping_cost %>
+    <%= form.hidden_field :total_payment, value: account_cart_items(@cart_items) + @shipping_cost %>
+    <%= form.hidden_field :payment_method, value: @order.payment_method %>
+    <%= form.submit "注文を確定する", class: "ml-auto btn btn-success" %>
+  <% end %>
+</div>
