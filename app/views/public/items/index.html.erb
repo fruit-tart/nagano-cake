@@ -3,10 +3,24 @@
 
 <div class="container">
   <div class="row">
-    <h2>商品一覧</h2>
-    <p>全<%= @items.count %>件</p>
-  </div>
-  <div class="row">
-    <%= render partial: "public/items/summary", collection: @items, as: "item" %>
+    <div class="col-3">
+      <div>
+        <h2>ジャンル検索</h2>
+        <%= render "public/items/genre_search", items: @items, genres: @genres %>
+      </div>
+      <div class="mt-4">
+        <h2>ワード検索</h2>
+        <%= render "public/items/word_search" %>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="d-flex align-items-baseline">
+        <h2><%= @collection_title %></h2>
+        <p>（全<%= @collection.count %>件）</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+        <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
+      </div>
+    </div>
   </div>
 </div>

@@ -25,9 +25,9 @@
           <td><%= price_include_tax(cart_item.item.price).to_s(:delimited) %></td>
           <td>
             <%= form_with(model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true) do |form| %>
-              <div class="form-group">
-                <%= form.number_field :amount, step: 1, min: 1 %>
-                <%= form.submit "変更", class: "btn btn-success" %>
+              <div class="form-group d-flex">
+                <%= form.number_field :amount, step: 1, min: 1, class: "form-control" %>
+                <%= form.submit "変更", class: "ml-2 btn btn-success" %>
               </div>
             <% end %>
           </td>
@@ -50,9 +50,11 @@
       </dl>
     </div>
   </div>
+  <% unless current_customer.cart_items.nil? %>
   <div class="row">
     <div class="col text-center">
       <%= link_to "情報入力へ進む", new_order_path, class: "btn btn-success" %>
     </div>
   </div>
+  <% end %>
 </div>
