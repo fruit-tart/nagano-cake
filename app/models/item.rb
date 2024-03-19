@@ -4,4 +4,11 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items
   has_many :order_details
+  
+  #バリテーション※販売ステータスが出来次第追加
+  validates :name, uniqueness: true, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
+  validates :genre, presence: true
+  
 end
