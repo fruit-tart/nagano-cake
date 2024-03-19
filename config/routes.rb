@@ -18,11 +18,11 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     resources :items, only: [:index, :show]
     namespace :customers do
-      get   "/my_page"            => "#show"
-      get   "/information/edit"  => "#edit"
-      patch "/information"       => "#update"
-      get   "/unsubscribe"       => "#unsubscribe"
-      patch "/withdraw"          => "#withdraw"
+      get   "/my_page"          => :show
+      get   "/information/edit" => :edit
+      patch "/information"      => :update
+      get   "/unsubscribe"      => :unsubscribe
+      patch "/withdraw"         => :withdraw
     end
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       delete "destroy_all", on: :collection
