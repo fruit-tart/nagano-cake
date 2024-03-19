@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    @new_order = Order.new
   end
 
   def confirm
@@ -12,8 +13,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show
+    @order = ordser_matched_id
   end
+
+  private
+    def ordser_matched_id
+      Order.find(params[:id])
+    end
 end
