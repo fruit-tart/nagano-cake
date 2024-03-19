@@ -15,6 +15,7 @@ TEST_POSTAL_CODE = ENV["TEST_POSTAL_CODE"]
 TEST_ADDRESS = ENV["TEST_ADDRESS"]
 TEST_TELEPHONE_NUMBER = ENV["TEST_TELEPHONE_NUMBER"]
 
+
 initial_customers = [
   {
     last_name: "一ノ瀬",
@@ -164,21 +165,21 @@ initial_order_details = [
   {
     order_id: 1,
     item_id: 1,
-    price: 2500,
+    price: 2750,
     amount: 1,
     making_status: 0
   },
   {
     order_id: 2,
     item_id: 2,
-    price: 450,
+    price: 495,
     amount: 2,
     making_status: 1
   },
   {
     order_id: 2,
     item_id: 3,
-    price: 280,
+    price: 308,
     amount: 2,
     making_status: 2
   }
@@ -194,3 +195,9 @@ initial_addresses = [
   }
 ]
 Address.create(initial_addresses)
+
+Admin.create!(
+   email: 'nagano@gmail',
+   password: 'nagano',
+   password_confirmation: "nagano"
+)
