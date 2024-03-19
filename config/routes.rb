@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     resources :items, only: [:index, :show]
     namespace :customers do
-      get   "/my_page"            => "#show"
+      get   "/my_page"           => "#show"
       get   "/information/edit"  => "#edit"
       patch "/information"       => "#update"
       get   "/unsubscribe"       => "#unsubscribe"
