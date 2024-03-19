@@ -26,7 +26,7 @@
 
   <div class="field">
     <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code, autocomplete: "postal_code", placeholder: "0000000" %>
+    <%= f.text_field :postal_code, pattern:"[0-9]{7}", autocomplete: "postal_code", placeholder: "0000000" %>
   </div>
 
   <div class="field">
