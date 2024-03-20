@@ -1,32 +1,44 @@
-<h1>商品一覧</h1>
+<%= form_with(url: admin_items_path, method: "get") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search items..." %>
+  <%= submit_tag "Search" %>
+<% end %>
 
-  <h2>
-    <%= link_to new_admin_item_path, size:100 do %>
-    <i class="fa-solid fa-square-plus"></i>
-    <% end %>
-  </h2>
-
-<table class="item-index">
-   <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-   <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td>
-          <%= link_to item.name, admin_item_path(item) %>
-        </td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-        <td><%= item.is_active %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  
+  <div class="row">
+    <h1>商品一覧</h1>
+    <h2>
+      <%= link_to new_admin_item_path, size:100 do %>
+      <i class="fa-solid fa-square-plus"></i>
+      <% end %>
+    </h2>
+  </div>
+  
+  <div class="row">
+    <table class="table">
+       <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td align="center"><%= item.id %></td>
+            <td>
+              <%= link_to item.name, admin_item_path(item) %>
+            </td>
+            <td align="center"><%= item.price %></td>
+            <td align="center"><%= item.genre.name %></td>
+            <td align="center"><%= item.is_active %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+</div>

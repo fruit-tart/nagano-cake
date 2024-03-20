@@ -1,5 +1,8 @@
 class Admin::CustomersController < ApplicationController
   def index
+    @customers = Customer.all
+    #↓会員氏名検索機能のメソッドです
+    @customers = @customers.where("full_name LIKE ?", "%#{params[:search]}%") if params[:search].present?
   end
 
   def show

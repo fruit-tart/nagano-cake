@@ -1,28 +1,51 @@
-<%= flash[:notice]%>
+<!--会員氏名検索-->
+<%= form_with(url: admin_customers_path, method: "get") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search items..." %>
+  <%= submit_tag "Search" %>
+<% end %>
+<!--ここまで-->
+<!--日付検索-->
+<%= form_with(url: admin_root_path, method: "get") do %>
+  <%= label_tag "start_date", "検索開始日" %>
+  <%= date_field_tag :start_date, params[:start_date] %>
+  <%= label_tag "end_date", "検索終了日" %>
+  <%= date_field_tag :end_date, params[:end_date] %>
+  <%= submit_tag "Search" %>
+<% end %>
+<!--ここまで-->
+<div class="container">
 
-<h1>注文履歴一覧</h1>
+  <div class="row">
+    <h1>注文履歴一覧</h1>
+  </div>
 
-<table class="order-index">
-   <thead>
-    <tr>
-      <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-    </tr>
-  </thead>
-   <tbody>
-    <% @orders.each do |order| %>
-      <tr align="center">
-        <td>
-          <%= link_to order.created_at,admin_order_path(order) %>
-        </td>
-        <td><%= order.name %></td>
-        <td>
-          <%= order.order_details.sum(:amount) %>
-        </td>
-        <td><%= order.status %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+         <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to l(order.created_at),admin_order_path(order) %>
+            </td>
+            <td><%= order.name %></td>
+            <td>
+              <%= order.order_details.sum(:amount) %>
+            </td>
+            <td><%= order.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
