@@ -1,4 +1,4 @@
-<%= form_with model: item, url: (item.persisted? ? admin_item_path(item) : admin_items_path), local: true do |f| %>
+<%= form_with(model: item, url: (item.persisted? ? admin_item_path(item) : admin_items_path), local: true) do |f| %>
       <table class='table'>
         <tr>
 	        <th>商品画像</th>
@@ -24,8 +24,13 @@
 	        <th>販売ステータス</th>
 	        <td></td>
         </tr>
-        <tr>
-          <th><%= f.submit %></th>
+        <tr align="center">
+          <th><% if item.persisted? %>
+                <%= f.submit "更新する", class: "btn btn-success" %>
+              <% else %>
+                <%= f.submit "新規登録", class: "btn btn-success" %>
+              <% end %>
+          </th>
         </tr>
      </table>
 <% end %>
