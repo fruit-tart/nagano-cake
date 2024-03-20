@@ -10,32 +10,30 @@
   </div>
   
   <div class="row">
-    <div class="col">
-      <table class="table">
-         <thead>
+    <table class="table">
+       <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @items.each do |item| %>
           <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
+            <td align="center"><%= item.id %></td>
+            <td>
+              <%= link_to item.name, admin_item_path(item) %>
+            </td>
+            <td align="center"><%= item.price %></td>
+            <td align="center"><%= item.genre.name %></td>
+            <td align="center"><%= item.is_active %></td>
           </tr>
-        </thead>
-         <tbody>
-          <% @items.each do |item| %>
-            <tr>
-              <td align="center"><%= item.id %></td>
-              <td>
-                <%= link_to item.name, admin_item_path(item) %>
-              </td>
-              <td align="center"><%= item.price %></td>
-              <td align="center"><%= item.genre_id %></td>
-              <td align="center"><%= item.is_active %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   
 </div>
