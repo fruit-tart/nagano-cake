@@ -15,9 +15,8 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, length: { is: 7 }
   validates :address, presence: true
   validates :telephone_number, presence: true, length: { in: 1..15 }
-  validates :email, presence: true
   # ここで何故エラーが起きるのか？
-  validates :email, uniqueness: { scope: :is_active, unless: -> { is_active == false } }, format: { with: VALID_EMAIL_REGEXP }
+  validates :email, presence: true, uniqueness: { scope: :is_active, if: -> { is_active == true } }, format: { with: VALID_EMAIL_REGEXP }
   validates :password, presence: true, confirmation: true, length: { minimum: 6, maximum: 129 }, if: :password_required?
   def password_required?
     password.present? || password_confirmation.present? || new_record?
