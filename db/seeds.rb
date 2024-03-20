@@ -46,6 +46,26 @@ initial_customers = [
     address: TEST_ADDRESS,
     telephone_number: TEST_TELEPHONE_NUMBER,
     is_active: false
+  },
+  {
+    last_name: "四谷",
+    first_name: "葵",
+    last_name_kana: "ヨツヤ",
+    first_name_kana: "アオイ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: false
+  },
+  {
+    last_name: "五条",
+    first_name: "咲夜",
+    last_name_kana: "ゴジョウ",
+    first_name_kana: "サクヤ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: false
   }
 ]
 
@@ -157,6 +177,36 @@ initial_orders = [
     total_payment: 2406,
     payment_method: 1,
     status: 1
+  },
+  {
+    customer_id: 3,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "三浦健太",
+    shipping_cost: 800,
+    total_payment: 3550,
+    payment_method: 0,
+    status: 0
+  },
+  {
+    customer_id: 4,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "四谷葵",
+    shipping_cost: 800,
+    total_payment: 1295,
+    payment_method: 0,
+    status: 1
+  },
+  {
+    customer_id: 5,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "五条咲夜",
+    shipping_cost: 800,
+    total_payment: 3110,
+    payment_method: 0,
+    status: 1
   }
 ]
 Order.create(initial_orders)
@@ -182,6 +232,48 @@ initial_order_details = [
     price: 308,
     amount: 2,
     making_status: 2
+  },
+  {
+    order_id: 3,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 4,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 5,
+    item_id: 8,
+    price: 495,
+    amount: 3,
+    making_status: 0
+  },
+  {
+    order_id: 6,
+    item_id: 2,
+    price: 495,
+    amount: 2,
+    making_status: 1
+  },
+  {
+    order_id: 6,
+    item_id: 3,
+    price: 308,
+    amount: 1,
+    making_status: 2
+  },
+  {
+    order_id: 6,
+    item_id: 5,
+    price: 253,
+    amount: 4,
+    making_status: 1
   }
 ]
 OrderDetail.create(initial_order_details)
