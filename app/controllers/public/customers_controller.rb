@@ -29,7 +29,8 @@ before_action :authenticate_customer!, only: [:show, :edit, :update, :unsubscrib
 
   def withdraw
     @customer = current_customer
-    @customer.update(is_active: false)
+    withdrew_email = "withdrawed_" + Time.now.to_i.to_s + @customer.email
+    @customer.update(email: withdrew_email, is_active: false)
     reset_session
     redirect_to root_path
   end
