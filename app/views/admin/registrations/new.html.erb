@@ -1,6 +1,7 @@
-<h2>Sign up</h2>
+<!--要らない所ですけど、一応form_withにしてます-->
+<h2>新規管理者登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @admin, url: admin_registration_path do |f| %>
   <%= render "admins/shared/error_messages", resource: resource %>
 
   <div class="field">
