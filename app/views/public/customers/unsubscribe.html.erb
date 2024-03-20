@@ -5,4 +5,16 @@
   退会する場合は、「退会する」をクリックしてください。
 </p>
 <%= link_to "退会しない", customers_my_page_path %>
-<%= link_to "退会する", customers_withdraw_path, method: :patch %>
+<%= link_to "退会する", customers_withdraw_path, method: :patch, id: "withdraw-btn" %>
+
+<script>
+  // Turbolinks対策必須
+  $(document).ready(function() {
+    $('#withdraw-btn').on('click', function() {
+      const confirmed = confirm('本当に退会しますか？');
+       if (!confirmed) {
+        return false;
+      }
+    });
+  });
+</script>
