@@ -1,0 +1,6 @@
+<%= form_with url: items_path, method: :get, local: true do |form| %>
+  <div class="form-group d-flex">
+    <%= form.text_field :word_search, class: "form-control" %>
+    <%= form.submit "検索", class: "ml-2 btn btn-primary" %>
+  </div>
+<% end %>
