@@ -1,3 +1,8 @@
+<%= form_with(url: admin_items_path, method: "get") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search items..." %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <div class="container">
   
   <div class="row">

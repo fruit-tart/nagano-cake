@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def index
      @items = Item.all.order(created_at: :asc)
+     @items = @items.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
   end
 
   def new
