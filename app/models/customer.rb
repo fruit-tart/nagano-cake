@@ -13,4 +13,12 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, length: { is: 7 },  format: {with: /\A\d{7}\z/}
   validates :address, presence: true
   validates :telephone_number, presence: true, length: { in: 1..15 }
+  
+  def fullname
+    self.last_name + "　" + self.first_name
+  end
+  
+  def fullname_kana
+    self.last_name_kana + "　" + self.first_name_kana
+  end
 end
