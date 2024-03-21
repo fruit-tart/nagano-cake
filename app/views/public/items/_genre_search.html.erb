@@ -1,12 +1,15 @@
-<div class="list-group">
-  <%= link_to items_path, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
-    すべて
-    <span class="badge badge-primary badge-pill"><%= items.where(is_active: true).count %></span>
-  <% end %>
-  <% genres.each do |genre| %>
-    <%= link_to items_path(genre_search: genre.id), class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
-      <%= genre.name %>
-      <span class="badge badge-primary badge-pill"><%= genre.items.where(is_active: true).count %></span>
+<aside class="mb-4">
+  <h2 class="public-common-heading" data-text-en="Genres">ジャンル検索</h2>
+  <div class="list-group shadow-sm">
+    <%= link_to items_path, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+      すべて
+      <span class="badge badge-primary badge-pill"><%= items.where(is_active: true).count %></span>
     <% end %>
-  <% end %>
-</div>
+    <% genres.each do |genre| %>
+      <%= link_to items_path(genre_search: genre.id), class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+        <%= genre.name %>
+        <span class="badge badge-primary badge-pill"><%= genre.items.where(is_active: true).count %></span>
+      <% end %>
+    <% end %>
+  </div>
+</aside>
