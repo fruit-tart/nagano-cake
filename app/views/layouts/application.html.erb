@@ -9,17 +9,17 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/<%= ENV["FONTAWESOME_KEY"] %>.js" crossorigin="anonymous"></script>
+    <%= render 'layouts/css_test' %>
   </head>
 
   <body>
-    <header>
-      <li>
-        LOGO
-      </li>
+    <header class="shadow-sm mb-4">
       <%= render 'layouts/header' %>
     </header>
-  <%= yield %>
-    <footer>
+    <main class="my-4">
+      <%= yield %>
+    </main>
+    <footer class="py-4">
       <%= render 'layouts/footer' %>
     </footer>
   </body>

@@ -1,9 +1,9 @@
-<%= link_to item_path(item) do %>
-  <div class="card h-100">
-    <%= image_tag item.image, style: "width: 100%;"%>
-    <div class="card-body">
-      <h5 class="card-title"><%= item.name %></h5>
-      <p class="card-text">￥<%= price_include_tax(item.price).to_s(:delimited) %><small>（税込）</small></p>
-    </div>
+<div class="card shadow-sm">
+  <%= image_tag item.image, class: "card-img-top"%>
+  <div class="card-body">
+    <%= link_to item.name, item_path(item), class: "card-title stretched-link text-dark" %>
   </div>
-<% end %>
+  <div class="card-footer bg-transparent text-right">
+    <span class="text-price-include-tax"><%= price_include_tax(item.price).to_s(:delimited) %></span>
+  </div>
+</div>

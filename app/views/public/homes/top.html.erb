@@ -1,2 +1,43 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 order-lg-0 order-1">
+      <%= render "public/items/genre_search", items: @items, genres: @genres %>
+    </div>
+    <div class="col-lg-9">
+      <section class="wrap-cover mb-4">
+        <!-- swiper -->
+        <div class="swiper" slides-per-view="auto" centered-slides="true">
+          <!-- スライド -->
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+               <%= image_tag 'top_slider_01.jpg' %>
+            </div>
+            <div class="swiper-slide">
+               <%= image_tag 'top_slider_02.jpg' %>
+            </div>
+            <div class="swiper-slide">
+               <%= image_tag 'top_slider_03.jpg' %>
+            </div>
+          </div>
+          <!-- ナビゲーションボタン -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        <div class="wrap-introduction bg-white shadow-sm">
+          <h2>ようこそ、<wbr>ながのCAKEへ！</h2>
+          <div>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            <small>※会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</small>
+          </div>
+        </div>
+      </section>
+      <section class="mb-4">
+        <h2 class="public-common-heading" data-text-en="New Items">新着商品</h2>
+        <div class="wrap-items">
+          <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
+        </div>
+        <%= link_to "", items_path %>
+      </section>
+    </div>
+  </div>
+</div>
