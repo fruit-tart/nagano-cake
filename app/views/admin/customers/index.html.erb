@@ -13,7 +13,7 @@
     <% @customers.each do |customer| %>
     <tr>
       <td><%= customer.id %></td>
-      <td><%= customer.admin_side_fullname %></td>
+      <td><%= link_to customer.admin_side_fullname, admin_customer_path(customer) %></td>
       <td><%= customer.email %></td>
       <td><%= customer.status %></td>
     </tr>
