@@ -44,9 +44,9 @@
   <% @order.order_details.each do |order_detail| %>
   <tr>
     <td><%= order_detail.item.name %></td>
-    <td><%= number_with_delimiter((order_detail.item.price * 1.1).to_i) %></td>
+    <td><%= order_detail.price.to_s(:delimited) %></td>
     <td><%= order_detail.amount %></td>
-    <td><%= number_with_delimiter(order_detail.price.to_i) %></td>
+    <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
     <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true) do |f| %>
     <td><%= f.select :making_status, OrderDetail.making_statuses_i18n  %></td>
     <td><%= f.submit "更新" , class: "btn btn-success" %></td>
@@ -59,14 +59,14 @@
 <table>
   <tr>
 	  <th>商品合計</th>
-	  <th><%=  %>円</th>
+	  <td><%= @order.order_details.inject(0) {|sum, order_detail| sum + (order_detail.price * order_detail.amount)}.to_s(:delimited) %>円</td>
   </tr>
   <tr>
 	  <th>送料</th>
-	  <th><%= @order.shipping_cost %>円</th>
+	  <td><%= @order.shipping_cost %>円</td>
   </tr>
   <tr>
 	  <th>請求金額合計</th>
-	  <th><%= @order.total_payment %>円</th>
+	  <td><%= @order.total_payment %>円</td>
   </tr>
 </table>
