@@ -7,7 +7,7 @@
   </tr>
   <tr>
 	  <th>注文日</th>
-	  <th><%=  %></th>
+	  <th><%= l(@order.created_at) %></th>
   </tr>
   <tr>
     <th>配送先</th>
@@ -39,8 +39,8 @@
       <th>制作ステータス</th>
     </tr>
   </thead>
+  
   <tbody>
-    
   <% @order.order_details.each do |order_detail| %>
   <tr>
     <td><%= order_detail.item.name %></td>
@@ -48,7 +48,7 @@
     <td><%= order_detail.amount %></td>
     <td><%= number_with_delimiter(order_detail.price.to_i) %></td>
     <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true) do |f| %>
-    <td><%= f.select :making_status, OrderDetail.making_statuses_i18n %></td>
+    <td><%= f.select :making_status, OrderDetail.making_statuses_i18n  %></td>
     <td><%= f.submit "更新" , class: "btn btn-success" %></td>
     <% end %>
   </tr>
