@@ -16,8 +16,8 @@
   
   <div class="row">
     <table class="table">
-       <thead>
-        <tr>
+       <thead class="table-dark">
+        <tr align="center">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜価格</th>
@@ -27,18 +27,18 @@
       </thead>
        <tbody>
         <% @items.each do |item| %>
-          <tr>
-            <td align="center"><%= item.id %></td>
+          <tr align="center">
+            <td><%= item.id %></td>
             <td>
               <%= link_to item.name, admin_item_path(item) %>
             </td>
-            <td align="center"><%= item.price %></td>
-            <td align="center"><%= item.genre.name %></td>
-            <td align="center"><% if item.is_active %>
-                                 <p class="text-success"><strong>販売中</strong></p>
-                               <% elsif %>
-                                 <p class="text-muted"><strong>販売停止</strong></p>
-                               <% end %></td>
+            <td><%= item.price %></td>
+            <td><%= item.genre.name %></td>
+            <td><% if item.is_active %>
+                  <p class="text-success"><strong>販売中</strong></p>
+                <% elsif %>
+                  <p class="text-muted"><strong>販売停止</strong></p>
+                <% end %></td>
           </tr>
         <% end %>
       </tbody>

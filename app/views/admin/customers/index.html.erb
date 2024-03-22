@@ -12,7 +12,7 @@
   <div class="row">
     <table class="table">
       <thead class="table-dark">
-        <tr>
+        <tr align="center">
           <th>会員ID</th>
           <th>氏名</th>
           <th>メールアドレス</th>
@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         <% @customers.each do |customer| %>
-        <tr>
+        <tr align="center">
           <td><%= customer.id %></td>
           <td><%= link_to customer.admin_side_fullname, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
