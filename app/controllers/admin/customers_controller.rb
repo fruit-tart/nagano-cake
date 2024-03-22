@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
   def index
     @customers = Customer.all
     #↓会員氏名検索機能のメソッド
-    @customers = @customers.where("full_name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+    @customers = @customers.select { |customer| customer.admin_side_fullname.include?(params[:search]) } if params[:search].present?
   end
 
   def show

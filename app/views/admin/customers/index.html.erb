@@ -1,3 +1,8 @@
+<%= form_with url: admin_customers_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: "会員検索(仮)" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <h2>会員一覧</h2>
 
 <table>
