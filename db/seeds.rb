@@ -165,21 +165,21 @@ initial_order_details = [
   {
     order_id: 1,
     item_id: 1,
-    price: 2500,
+    price: 2750,
     amount: 1,
     making_status: 0
   },
   {
     order_id: 2,
     item_id: 2,
-    price: 450,
+    price: 495,
     amount: 2,
     making_status: 1
   },
   {
     order_id: 2,
     item_id: 3,
-    price: 280,
+    price: 308,
     amount: 2,
     making_status: 2
   }

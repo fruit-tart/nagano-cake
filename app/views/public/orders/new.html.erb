@@ -1,2 +1,66 @@
 <h1>Public::Orders#new</h1>
 <p>Find me in app/views/public/orders/new.html.erb</p>
+
+<div class="container">
+  <h2>注文情報入力</h2>
+  <%= form_with model: @new_order, url: confirm_orders_path(@new_order), method: :post, local: true do |form| %>
+
+    <div>
+      <h3>支払方法</h3>
+      <div class="form-group">
+        <%= form.radio_button :payment_method, 0, checked: true %>
+        <%= form.label :payment_method_0, "クレジットカード" %>
+      </div>
+      <div class="form-group">
+        <%= form.radio_button :payment_method, 1 %>
+        <%= form.label :payment_method_1, "銀行振込" %>
+      </div>
+    </div>
+
+    <div>
+      <h3>お届け先</h3>
+      <div class="form-group">
+        <div class="form-group">
+          <%= form.radio_button :select_address, 0, checked: true %>
+          <%= form.label :select_address_0, "ご自身の住所" %>
+        </div>
+        <div class="form-group ml-4">
+          <p>〒<%= current_customer.postal_code %></p>
+          <p><%= current_customer.address %></p>
+          <p><%= current_customer.last_name %><%= current_customer.first_name %></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <%= form.radio_button :select_address, 1 %>
+          <%= form.label :select_address_1, "登録済住所から選択" %>
+        </div>
+        <div class="form-group ml-4">
+          <%= form.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <%= form.radio_button :select_address, 2 %>
+          <%= form.label :select_address_2, "新しいお届け先" %>
+        </div>
+        <div class="form-group ml-4">
+          <div class="form-group">
+            <%= form.label :new_postal_code, "郵便番号（ハイフンなし）" %>
+            <%= form.text_field :postal_code %>
+          </div>
+          <div class="form-group">
+            <%= form.label :new_address, "住所" %>
+            <%= form.text_field :address %>
+          </div>
+          <div class="form-group">
+            <%= form.label :new_name, "宛名" %>
+            <%= form.text_field :name %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= form.submit "確認画面へ進む", class: "ml-auto btn btn-success" %>
+  <% end %>
+</div>

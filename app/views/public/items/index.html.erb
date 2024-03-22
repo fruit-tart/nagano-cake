@@ -1,2 +1,17 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 order-lg-0 order-1">
+      <%= render "public/items/genre_search", items: @items, genres: @genres %>
+    </div>
+    <div class="col-lg-9">
+      <section class="mb-4">
+        <h2 class="public-common-heading" data-text-en="Items">
+          <%= @collection_title %>（全<%= @collection.count %>件）
+        </h2>
+        <div class="wrap-items">
+          <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

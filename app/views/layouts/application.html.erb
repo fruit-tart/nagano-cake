@@ -9,24 +9,18 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/<%= ENV["FONTAWESOME_KEY"] %>.js" crossorigin="anonymous"></script>
+    <%= render 'layouts/css_test' %>
   </head>
 
   <body>
-    <header>
-    <% if customer_signed_in? %>
-     <li>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-     </li>
-    <% elsif admin_signed_in? %>
-     <li>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-     </li>
-    <% else %>
-     <li>
-     <%= link_to "ログイン", new_admin_session_path %>
-     </li>
-    <% end %>
+    <header class="shadow-sm mb-4">
+      <%= render 'layouts/header' %>
     </header>
-  <%= yield %>
+    <main class="my-4">
+      <%= yield %>
+    </main>
+    <footer class="py-4">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
