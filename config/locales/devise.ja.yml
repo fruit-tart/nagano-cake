@@ -1,3 +1,5 @@
+# config>application.rbでrailsのデフォルトを日本語に変更したため、
+# devise内でI18n.t(翻訳の仕組み)を使用している箇所に対応する内容の記述
 ja:
   activerecord:
     attributes:
