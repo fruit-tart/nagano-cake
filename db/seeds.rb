@@ -166,7 +166,8 @@ initial_orders = [
     shipping_cost: 800,
     total_payment: 3550,
     payment_method: 0,
-    status: 0
+    status: 0,
+    created_at: "2024/03/12 10:13:55"
   },
   {
     customer_id: 2,
@@ -176,7 +177,8 @@ initial_orders = [
     shipping_cost: 800,
     total_payment: 2406,
     payment_method: 1,
-    status: 1
+    status: 1,
+    created_at: "2024/03/13 12:14:51"
   },
   {
     customer_id: 3,
@@ -186,7 +188,8 @@ initial_orders = [
     shipping_cost: 800,
     total_payment: 3550,
     payment_method: 0,
-    status: 0
+    status: 0,
+    created_at: "2024/03/14 14:21:34"
   },
   {
     customer_id: 4,
@@ -196,7 +199,8 @@ initial_orders = [
     shipping_cost: 800,
     total_payment: 1295,
     payment_method: 0,
-    status: 1
+    status: 1,
+    created_at: "2024/03/15 16:35:15"
   },
   {
     customer_id: 5,
@@ -204,9 +208,21 @@ initial_orders = [
     address: TEST_ADDRESS,
     name: "五条咲夜",
     shipping_cost: 800,
+    total_payment: 2285,
+    payment_method: 0,
+    status: 1,
+    created_at: "2024/03/16 18:13:00"
+  },
+  {
+    customer_id: 6,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "六本木裕太",
+    shipping_cost: 800,
     total_payment: 3110,
     payment_method: 0,
-    status: 1
+    status: 1,
+    created_at: "2024/03/18 10:18:08"
   }
 ]
 Order.create(initial_orders)
