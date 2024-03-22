@@ -8,4 +8,8 @@ module ApplicationHelper
   def account_cart_items(cart_items)
     cart_items.inject(0){|sum, cart_item| sum + (price_include_tax(cart_item.item.price) * cart_item.amount)}
   end
+  
+  def format_postal_code(postal_code)
+    postal_code.gsub(/(\d{3})(\d{4})/, '\\1-\\2')
+  end
 end
