@@ -3,25 +3,37 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<h2>会員一覧</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= link_to customer.admin_side_fullname, admin_customer_path(customer) %></td>
-      <td><%= customer.email %></td>
-      <td><%= customer.status %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  
+  <div class="row">
+    <h2>会員一覧</h2>
+  </div>
+  
+  <div class="row">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.admin_side_fullname, admin_customer_path(customer) %></td>
+          <td><%= customer.email %></td>
+          <td><% if customer.is_active %>
+                <p class="text-success"><strong>有効</strong></p>
+              <% elsif %>
+                <p class="text-muted"><strong>退会</strong></p>
+              <% end %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
