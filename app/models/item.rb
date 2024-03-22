@@ -11,4 +11,8 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :genre, presence: true
   
+  def status
+    is_active ? "true" : "false"
+  end
+  
 end

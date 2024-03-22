@@ -8,12 +8,12 @@
     <div>
       <h3>支払方法</h3>
       <div class="form-group">
-        <%= form.radio_button :payment_method, 0, checked: true %>
-        <%= form.label :payment_method_0, "クレジットカード" %>
+        <%= form.radio_button :payment_method, :credit_card, checked: true %>
+        <%= form.label :payment_method_credit_card, "クレジットカード" %>
       </div>
       <div class="form-group">
-        <%= form.radio_button :payment_method, 1 %>
-        <%= form.label :payment_method_1, "銀行振込" %>
+        <%= form.radio_button :payment_method, :transfer %>
+        <%= form.label :payment_method_transfer, "銀行振込" %>
       </div>
     </div>
 

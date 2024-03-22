@@ -1,26 +1,17 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
-
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <div>
-        <h2>ジャンル検索</h2>
-        <%= render "public/items/genre_search", items: @items, genres: @genres %>
-      </div>
-      <div class="mt-4">
-        <h2>ワード検索</h2>
-        <%= render "public/items/word_search" %>
-      </div>
+    <div class="col-lg-3 order-lg-0 order-1">
+      <%= render "public/items/genre_search", items: @items, genres: @genres %>
     </div>
-    <div class="col-9">
-      <div class="d-flex align-items-baseline">
-        <h2><%= @collection_title %></h2>
-        <p>（全<%= @collection.count %>件）</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
-        <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
-      </div>
+    <div class="col-lg-9">
+      <section class="mb-4">
+        <h2 class="public-common-heading" data-text-en="Items">
+          <%= @collection_title %>（全<%= @collection.count %>件）
+        </h2>
+        <div class="wrap-items">
+          <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
+        </div>
+      </section>
     </div>
   </div>
 </div>

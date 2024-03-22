@@ -2,13 +2,7 @@ class Public::CustomersController < ApplicationController
 before_action :authenticate_customer!, only: [:show, :edit, :update, :unsubscribe, :withdraw]
 
   def show
-    customer = current_customer
-    @fullname = customer.last_name + "　" + customer.first_name
-    @fullname_kana = customer.last_name_kana + "　" + customer.first_name_kana
-    @postal_code = customer.postal_code
-    @address = customer.address
-    @telephone_number = customer.telephone_number
-    @email = customer.email
+    @customer = current_customer
   end
 
   def edit
@@ -34,7 +28,7 @@ before_action :authenticate_customer!, only: [:show, :edit, :update, :unsubscrib
     reset_session
     redirect_to root_path
   end
-  
+
   private
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number)
