@@ -1,13 +1,13 @@
-<nav class="navbar navbar-light bg-white navbar-expand-md">
-  <div class="container">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "logo_nagano-cake", class: "img-logo" %>
+<nav class="container navbar navbar-light navbar-expand-md">
+  <div class="w-100 d-flex flex-wrap justify-content-between">
+    <%= link_to root_path, class: "header-logo navbar-brand" do %>
+      <%= image_tag "logo_nagano-cake" %>
     <% end %>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="header-btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse justify-content-end justify-content-lg-center" id="navbarSupportedContent">
+      <ul class="navbar-nav">
       <% if admin_signed_in? %>
       <!-- 管理者がログインしている場合 -->
         <li class="nav-item">
@@ -94,6 +94,25 @@
         </li>
       <% end %>
       </ul>
+    </div>
+    <div class="header-search-box">
+        <%= form_with url: items_path, method: :get, local: true do |form| %>
+          <div class="form-group d-flex m-0">
+            <%= form.text_field :word_search, placeholder: "商品名で検索", class: "form-control" %>
+            <%= form.button :type => "submit", class: "ml-2 btn btn-secondary" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </div>
+        <% end %>
+      <% if admin_signed_in? %>
+        <span class="text-signed-in">
+          管理者でログインしています
+        </span>
+      <% elsif customer_signed_in? %>
+        <span class="text-signed-in">
+          ようこそ、<%= current_customer.last_name + " " + current_customer.first_name + " " %>さん！
+        </span>
+      <% end %>
     </div>
   </div>
 </nav>

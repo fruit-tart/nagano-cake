@@ -1,0 +1,30 @@
+<div class="form-row">名前</div>
+<div class="form-row align-items-center mb-2">
+  <%= form.label :last_name, "姓", class: "col-3 col-sm-2 col-md-1 mb-2 mb-md-0" %>
+  <%= form.text_field :last_name, autofocus: true, autocomplete: "family-name", placeholder: "令和", class: "col-9 col-sm-10 col-md-4 mb-2 mb-md-0 mr-md-4 form-control" %>
+  <%= form.label :first_name, "名", class: "col-3 col-sm-2 col-md-1 m-0" %>
+  <%= form.text_field :first_name, autocomplete: "given-name", placeholder: "道子", class: "col-9 col-sm-10 col-md-4 form-control" %>
+</div>
+<div class="form-row">フリガナ</div>
+<div class="form-row align-items-center mb-2">
+  <%= form.label :last_name_kana, "セイ", class: "col-3 col-sm-2 col-md-1 mb-2 mb-md-0" %>
+  <%= form.text_field :last_name_kana, pattern: "^[ァ-ヶー]+$", autocomplete: "on", placeholder: "レイワ", class: "col-9 col-sm-10 col-md-4 mb-2 mb-md-0 mr-md-4 form-control" %>
+  <%= form.label :first_name_kana, "メイ", class: "col-3 col-sm-2 col-md-1 m-0" %>
+  <%= form.text_field :first_name_kana, pattern: "^[ァ-ヶー]+$", autocomplete: "on", placeholder: "ミチコ", class: "col-9 col-sm-10 col-md-4 form-control" %>
+</div>
+<div class="form-row align-items-center mb-2">
+  <%= form.label :email, "メールアドレス" %>
+  <%= form.email_field :email, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+</div>
+<div class="form-row align-items-center mb-2">
+  <%= form.label :postal_code, "郵便番号(ハイフンなし)" %>
+  <%= form.text_field :postal_code, pattern:"[0-9]{7}", autocomplete: "postal_code", placeholder: "0000000", class: "form-control" %>
+</div>
+<div class="form-row align-items-center mb-2">
+  <%= form.label :address, "住所" %>
+  <%= form.text_field :address, autocomplete: "street-address", placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %>
+</div>
+<div class="form-row align-items-center mb-2">
+  <%= form.label :telephone_number, "電話番号" %>
+  <%= form.telephone_field :telephone_number, pattern:"[0-9]{1,15}", autocomplete: "phone-national", placeholder: "0000000000", class: "form-control" %>
+</div>

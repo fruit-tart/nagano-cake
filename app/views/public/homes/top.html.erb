@@ -24,7 +24,7 @@
           <div class="swiper-button-next"></div>
         </div>
         <div class="wrap-introduction bg-white shadow-sm">
-          <h2>ようこそ、<wbr>ながのCAKEへ！</h2>
+          <h2 class="text-heading h3">ようこそ、<wbr>ながのCAKEへ！</h2>
           <div>
             このサイトは、ケーキ販売のECサイトになります。<br>
             <small>※会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</small>
@@ -32,7 +32,10 @@
         </div>
       </section>
       <section class="mb-4">
-        <h2 class="public-common-heading" data-text-en="New Items">新着商品</h2>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="public-common-heading" data-text-en="New Items">新着商品</h2>
+          <%= link_to "一覧へ", items_path, class: "btn btn-primary btn-sm mb-2" %>
+        </div>
         <div class="wrap-items">
           <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
         </div>

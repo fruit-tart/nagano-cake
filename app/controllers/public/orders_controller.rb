@@ -1,5 +1,8 @@
 class Public::OrdersController < ApplicationController
+  TAX_RATE = 1.1
   SHIPPING_COST = 800
+
+  before_action :authenticate_customer!
 
   def new
     @new_order = Order.new
@@ -20,6 +23,10 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = target_address.postal_code
       @order.address = target_address.address
       @order.name = target_address.name
+    when 2 then
+      if @order.postal_code.blank? || @order.address.blank? || @order.name.blank?
+        redirect_to action: "new"
+      end
     end
 
   end
@@ -36,7 +43,7 @@ class Public::OrdersController < ApplicationController
         OrderDetail.create(
           order_id: order.id,
           item_id: cart_item.item_id,
-          price: cart_item.item.price,
+          price: (cart_item.item.price * TAX_RATE).floor,
           amount: cart_item.amount,
         )
         cart_item.destroy
@@ -52,11 +59,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(customer_id: current_customer.id)
+    @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
   end
 
   def show
-    @order = ordser_matched_id
+    if params[:id] == "confirm"
+      redirect_to action: "new"
+    else
+      @order = ordser_matched_id
+    end
   end
 
   private
