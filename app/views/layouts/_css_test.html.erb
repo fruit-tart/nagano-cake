@@ -38,12 +38,24 @@ body {
 header{
   border-top: 4px solid var(--color-gold);
 }
-.img-logo{
+.header-logo{
   opacity: 0.8;
-  max-height: 5rem;
+  max-width: 75%;
+  height: 5rem;
 }
-.img-logo:hover{
+.header-logo:hover{
   opacity: 1;
+}
+.header-logo > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.header-btn{
+  align-self: center;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 .header-nav-link{
   font-weight: bold;
@@ -62,13 +74,42 @@ header{
 }
 @media screen and (min-width: 768px) {
   .header-nav-link{
-    min-width: 6rem;
-    font-size: 14px;
+    min-width: 7em;
+    font-size: 12px;
     flex-direction: column;
   }
   .header-nav-link > i{
     font-size: 2.5em;
   }
+}
+.header-menu{
+  width: auto;
+}
+.header-search-box{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+@media not screen and (min-width: 992px) {
+  .header-search-box{
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+    margin-top: 1rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .header-search-box{
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+  }
+}
+.text-signed-in{
+  font-size: smaller;
+  color: var(--color-secondary);
+  margin-left: auto;
 }
 /* swiper（public/homes/top） */
 .swiper-slide{
@@ -87,12 +128,6 @@ header{
   z-index: 1;
   padding: 1.5rem;
   margin: -1rem 1rem 0;
-}
-.wrap-introduction > h2{
-  font-family: var(--font-family-serif);
-  font-weight: bold;
-  color: var(--color-gold);
-  word-break: keep-all;
 }
 @media screen and (min-width: 768px) {
   .wrap-introduction{
@@ -113,6 +148,12 @@ header{
   }
 }
 /* 見出し（public共通） */
+.text-heading {
+  font-family: var(--font-family-serif);
+  font-weight: bold;
+  color: var(--color-gold);
+  word-break: keep-all;
+}
 .public-common-heading {
   display: flex;
   flex-wrap: wrap;
@@ -128,12 +169,16 @@ header{
   color: var(--color-gold);
 }
 /* 価格表記（public共通） */
+.text-price,
 .text-price-include-tax{
   display: flex;
   gap: 0.25em;
-  justify-content: end;
   align-items: baseline;
 }
+.text-price-include-tax{
+  justify-content: end;
+}
+.text-price::before,
 .text-price-include-tax::before{
   content: "¥";
   font-size: 0.875em;
@@ -141,6 +186,91 @@ header{
 .text-price-include-tax::after{
   content: "(税込)";
   font-size: 0.625em;
+}
+/* カート（public/cart_items） */
+.cart-head{
+  background-color: rgba(0, 0, 0, .05);
+}
+.cart-item-thumbnail{
+  width: 4rem;
+  height: 4rem;
+  min-width: 4rem;
+  min-height: 4rem;
+}
+.cart-item-thumbnail > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nowrap{
+  white-space: nowrap;
+}
+.total-amount{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: end;
+  column-gap: 2em;
+}
+.total-amount > div{
+  display: flex;
+  align-items: end;
+  column-gap: 0.5em;
+}
+.total-amount > div > dt::after{
+  content: "：";
+}
+.card tr > *:first-child{
+  padding-left: 1.5rem;
+}
+.card tr > *:last-child{
+  padding-right: 1.5rem;
+}
+@media not screen and (min-width: 768px) {
+  .cart-head{
+    display: none;
+  }
+  .cart-body > tr {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-body > tr > th {
+    background-color: rgba(0, 0, 0, .05);
+  }
+  .align-middle{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+  .align-middle[data-title]::before{
+    content: attr(data-title);
+    min-width: 7em;
+    font-weight: bold;
+    text-align: center;
+    border-right: 1px solid;
+    padding-right: 1em;
+  }
+  .card tr > *{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+/* プロフィール */
+.list-customer-data{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2em;
+}
+.list-customer-data > dt{
+  grid-column: 1;
+}
+.list-customer-data > dd{
+  grid-column: 2;
+}
+/* bootstrap使用時のformエラー時のレイアウト崩れ回避 */
+.field_with_errors{
+  display: contents;
 }
 /* footer（共通） */
 footer{
@@ -154,7 +284,22 @@ footer{
   margin: 0;
   padding: 0;
 }
-.sns-link{
-  font-size: 24px;
+.link-sns{
+  display: flex;
+  align-items: center;
+}
+@media not screen and (min-width: 576px) {
+  .link-sns{
+    margin-bottom: 1rem;
+    font-size: larger;
+    padding: 0.5rem 1rem;
+  }
+}
+.link-sns:hover{
+  color: var(--color-gold);
+}
+.link-sns > i {
+  font-size: 1.5em;
+  margin-right: 0.25em;
 }
 </style>
