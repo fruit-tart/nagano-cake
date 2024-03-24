@@ -12,24 +12,28 @@
   <% end %>
     
   <div class="row">
-    <div class="offset-2 col-8 offset-2">
-      <table class="table">
-        <thead align="center">
-          <tr>
-            <th>ジャンル名</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody align="center">
-          <% @genres.each do |genre| %>
-          <tr>
-            <td><%= genre.name %></td>
-            <td><%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
-          </tr>
-          <% end %>
+    <div class="col">
+      <div class="offset-2 col-8 offset-2">
+        <table class="table">
+          <thead align="center">
+            <tr>
+              <th>ジャンル名</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody align="center">
+            <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
           <%= paginate @genres %>
-        </tbody>
-      </table>
+          </div>
+      </div>
     </div>
   </div>
   
