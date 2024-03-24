@@ -23,7 +23,7 @@
     <div class="col">
       <table class="table">
         <thead class="table-dark">
-          <tr>
+          <tr align="center">
             <th>購入日時</th>
             <th>購入者</th>
             <th>注文個数</th>
@@ -32,7 +32,7 @@
         </thead>
          <tbody>
           <% @orders.each do |order| %>
-          <tr>
+          <tr align="center">
             <td>
               <%= link_to l(order.created_at),admin_order_path(order) %>
             </td>
