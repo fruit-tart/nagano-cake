@@ -7,7 +7,7 @@ class Admin::HomesController < ApplicationController
       @orders = Order.where(created_at: start_date.beginning_of_day..end_date.end_of_day).order(created_at: :desc)
    else
   #ここまで
-      @orders = Order.all.order(created_at: :desc)
+      @orders = Order.all.order("created_at DESC").page(params[:page])
    end
   end
 
