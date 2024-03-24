@@ -46,6 +46,89 @@ initial_customers = [
     address: TEST_ADDRESS,
     telephone_number: TEST_TELEPHONE_NUMBER,
     is_active: false
+<<<<<<< HEAD
+=======
+  },
+  {
+    last_name: "四谷",
+    first_name: "葵",
+    last_name_kana: "ヨツヤ",
+    first_name_kana: "アオイ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: false
+  },
+  {
+    last_name: "五条",
+    first_name: "咲夜",
+    last_name_kana: "ゴジョウ",
+    first_name_kana: "サクヤ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: false
+  },
+  {
+    last_name: "六本木",
+    first_name: "裕太",
+    last_name_kana: "ロッポンギ",
+    first_name_kana: "ユウタ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: true
+  },
+  {
+    last_name: "七海",
+    first_name: "美咲",
+    last_name_kana: "ナナミ",
+    first_name_kana: "ミサキ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: true
+  },
+  {
+    last_name: "八幡",
+    first_name: "哲也",
+    last_name_kana: "ヤハタ",
+    first_name_kana: "テツヤ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: true
+  },
+  {
+    last_name: "九条",
+    first_name: "華",
+    last_name_kana: "クジョウ",
+    first_name_kana: "ハナ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: true
+  },
+  {
+    last_name: "十森",
+    first_name: "蓮",
+    last_name_kana: "トモリ",
+    first_name_kana: "レン",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: true
+  },
+  {
+    last_name: "五十嵐",
+    first_name: "奈緒美",
+    last_name_kana: "イガラシ",
+    first_name_kana: "ナオミ",
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    telephone_number: TEST_TELEPHONE_NUMBER,
+    is_active: true
+>>>>>>> a83c027 ([Add]kaminariをビューに反映)
   }
 ]
 
@@ -156,7 +239,107 @@ initial_orders = [
     shipping_cost: 800,
     total_payment: 2406,
     payment_method: 1,
-    status: 1
+    status: 1,
+    created_at: "2024/03/13 12:14:51"
+  },
+  {
+    customer_id: 3,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "三浦健太",
+    shipping_cost: 800,
+    total_payment: 3550,
+    payment_method: 0,
+    status: 0,
+    created_at: "2024/03/14 14:21:34"
+  },
+  {
+    customer_id: 4,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "四谷葵",
+    shipping_cost: 800,
+    total_payment: 1295,
+    payment_method: 0,
+    status: 1,
+    created_at: "2024/03/15 16:35:15"
+  },
+  {
+    customer_id: 5,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "五条咲夜",
+    shipping_cost: 800,
+    total_payment: 2285,
+    payment_method: 0,
+    status: 1,
+    created_at: "2024/03/16 18:13:00"
+  },
+  {
+    customer_id: 6,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "六本木裕太",
+    shipping_cost: 800,
+    total_payment: 3110,
+    payment_method: 0,
+    status: 0,
+    created_at: "2024/03/17 10:18:08"
+  },
+  {
+    customer_id: 7,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "七海美咲",
+    shipping_cost: 800,
+    total_payment: 3550,
+    payment_method: 0,
+    status: 0,
+    created_at: "2024/03/18 12:19:08"
+  },
+  {
+    customer_id: 8,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "八幡哲也",
+    shipping_cost: 800,
+    total_payment: 3550,
+    payment_method: 0,
+    status: 0,
+    created_at: "2024/03/19 10:10:03"
+  },
+  {
+    customer_id: 9,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "九条華",
+    shipping_cost: 800,
+    total_payment: 3550,
+    payment_method: 0,
+    status: 1,
+    created_at: "2024/03/20 17:14:08"
+  },
+  {
+    customer_id: 10,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "十森蓮",
+    shipping_cost: 800,
+    total_payment: 3550,
+    payment_method: 0,
+    status: 1,
+    created_at: "2024/03/21 16:43:00"
+  },
+  {
+    customer_id: 11,
+    postal_code: TEST_POSTAL_CODE,
+    address: TEST_ADDRESS,
+    name: "五十嵐奈緒美",
+    shipping_cost: 800,
+    total_payment: 3110,
+    payment_method: 0,
+    status: 1,
+    created_at: "2024/03/22 15:33:38"
   }
 ]
 Order.create(initial_orders)
@@ -182,6 +365,97 @@ initial_order_details = [
     price: 308,
     amount: 2,
     making_status: 2
+  },
+  {
+    order_id: 3,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 4,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 5,
+    item_id: 8,
+    price: 495,
+    amount: 3,
+    making_status: 0
+  },
+  {
+    order_id: 6,
+    item_id: 2,
+    price: 495,
+    amount: 2,
+    making_status: 1
+  },
+  {
+    order_id: 6,
+    item_id: 3,
+    price: 308,
+    amount: 1,
+    making_status: 2
+  },
+  {
+    order_id: 6,
+    item_id: 5,
+    price: 253,
+    amount: 4,
+    making_status: 1
+  },
+  {
+    order_id: 7,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 8,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 9,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 10,
+    item_id: 1,
+    price: 2750,
+    amount: 1,
+    making_status: 0
+  },
+  {
+    order_id: 11,
+    item_id: 2,
+    price: 495,
+    amount: 2,
+    making_status: 1
+  },
+  {
+    order_id: 11,
+    item_id: 3,
+    price: 308,
+    amount: 1,
+    making_status: 2
+  },
+  {
+    order_id: 11,
+    item_id: 5,
+    price: 253,
+    amount: 4,
+    making_status: 1
   }
 ]
 OrderDetail.create(initial_order_details)
