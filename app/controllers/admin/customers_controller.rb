@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page])
     #↓会員氏名検索機能のメソッド
     @customers = @customers.select { |customer| customer.admin_side_fullname.include?(params[:search]) } if params[:search].present?
   end
