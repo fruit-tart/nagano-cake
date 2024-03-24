@@ -46,8 +46,6 @@ initial_customers = [
     address: TEST_ADDRESS,
     telephone_number: TEST_TELEPHONE_NUMBER,
     is_active: false
-<<<<<<< HEAD
-=======
   },
   {
     last_name: "四谷",
@@ -128,7 +126,6 @@ initial_customers = [
     address: TEST_ADDRESS,
     telephone_number: TEST_TELEPHONE_NUMBER,
     is_active: true
->>>>>>> a83c027 ([Add]kaminariをビューに反映)
   }
 ]
 
