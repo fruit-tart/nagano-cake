@@ -25,6 +25,11 @@ class Admin::CustomersController < ApplicationController
       render :edit
     end
   end
+  
+  def orders
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.order(created_at: :desc)
+  end
 
   private
   def customer_params
