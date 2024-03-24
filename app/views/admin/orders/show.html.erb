@@ -50,10 +50,10 @@
         <% @order.order_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.price.to_s(:delimited) %></td>
-            <td><%= order_detail.amount %></td>
-            <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
-            <td>
+            <td align="center"><%= order_detail.price.to_s(:delimited) %></td>
+            <td align="center"><%= order_detail.amount %></td>
+            <td align="center"><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
+            <td align="center">
             <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true) do |f| %>
               <%= f.select :making_status, OrderDetail.making_statuses_i18n.map { |key, value| [value, key] } %>
               <%= f.submit "更新" , class: "btn btn-success" %>
