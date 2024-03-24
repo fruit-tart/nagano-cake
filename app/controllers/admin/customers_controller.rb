@@ -1,10 +1,10 @@
 class Admin::CustomersController < ApplicationController
   def index
     if params[:search].present?
-      @customers = Customer.select { |customer| customer.admin_side_fullname.include?(params[:search]) }
+      @customers = Customer.select { |customer| customer.admin_side_fullname.include?(params[:search]) }.page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @customers = Customer.all
+      @customers = Customer.all.page(params[:page])
       @heading = "会員一覧"
     end
   end

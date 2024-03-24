@@ -1,10 +1,10 @@
 class Admin::ItemsController < ApplicationController
   def index
     if params[:search].present?
-      @items = Item.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      @items = Item.where("name LIKE ?", "%#{params[:search]}%").page(params[:page]) if params[:search].present?
       @heading = "「#{params[:search]}」の検索結果"
     else
-      @items = Item.all.order(created_at: :asc)
+      @items = Item.all.order(created_at: :asc).page(params[:page])
       @heading = "商品一覧"
     end
   end

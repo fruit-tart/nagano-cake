@@ -8,34 +8,39 @@
   </div>
 
   <div class="row">
-    <table class="table">
-       <thead class="table-dark">
-        <tr align="center">
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税抜価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-       <tbody>
-        <% @items.each do |item| %>
+    <div class="col">
+      <table class="table">
+         <thead class="table-dark">
           <tr align="center">
-            <td><%= item.id %></td>
-            <td>
-              <%= link_to item.name, admin_item_path(item) %>
-            </td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
-            <td><% if item.is_active %>
-                  <p class="text-success"><strong>販売中</strong></p>
-                <% elsif %>
-                  <p class="text-muted"><strong>販売停止</strong></p>
-                <% end %></td>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+         </thead>
+         <tbody>
+          <% @items.each do |item| %>
+            <tr align="center">
+              <td><%= item.id %></td>
+              <td>
+                <%= link_to item.name, admin_item_path(item) %>
+              </td>
+              <td><%= item.price %></td>
+              <td><%= item.genre.name %></td>
+              <td><% if item.is_active %>
+                    <p class="text-success"><strong>販売中</strong></p>
+                  <% elsif %>
+                    <p class="text-muted"><strong>販売停止</strong></p>
+                  <% end %></td>
+            </tr>
+          <% end %>
+         </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <%= paginate @items %>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -5,30 +5,35 @@
   </div>
 
   <div class="row">
-    <table class="table">
-      <thead class="table-dark">
-        <tr align="center">
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @customers.each do |customer| %>
-        <tr align="center">
-          <td><%= customer.id %></td>
-          <td><%= link_to customer.admin_side_fullname, admin_customer_path(customer) %></td>
-          <td><%= customer.email %></td>
-          <td><% if customer.is_active %>
-                <p class="text-success"><strong>有効</strong></p>
-              <% elsif %>
-                <p class="text-muted"><strong>退会</strong></p>
-              <% end %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="col">
+      <table class="table">
+        <thead class="table-dark">
+          <tr align="center">
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr align="center">
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.admin_side_fullname, admin_customer_path(customer) %></td>
+            <td><%= customer.email %></td>
+            <td><% if customer.is_active %>
+                  <p class="text-success"><strong>有効</strong></p>
+                <% elsif %>
+                  <p class="text-muted"><strong>退会</strong></p>
+                <% end %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <%= paginate @customers %>
+      </div>
+    </div>
   </div>
 
 </div>
