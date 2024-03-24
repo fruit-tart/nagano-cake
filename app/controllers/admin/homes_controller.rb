@@ -10,4 +10,13 @@ class Admin::HomesController < ApplicationController
       @orders = Order.all.order(created_at: :desc)
    end
   end
+
+  def search
+    case params[:search_model]
+    when "customer" then
+      redirect_to admin_customers_path(search: params[:search])
+    when "item" then
+      redirect_to admin_items_path(search: params[:search])
+    end
+  end
 end

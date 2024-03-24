@@ -1,7 +1,12 @@
 class Admin::ItemsController < ApplicationController
   def index
-     @items = Item.all.order(created_at: :asc)
-     @items = @items.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+    if params[:search].present?
+      @items = Item.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+      @heading = "「#{params[:search]}」の検索結果"
+    else
+      @items = Item.all.order(created_at: :asc)
+      @heading = "商品一覧"
+    end
   end
 
   def new
@@ -17,7 +22,7 @@ class Admin::ItemsController < ApplicationController
     flash[:alert] = "error"
     render :new
    end
- 
+
   end
 
   def show
@@ -38,11 +43,11 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-  
+
   private
-  
+
   def item_params
     params.require(:item).permit(:image,:genre_id, :name, :introduction, :price, :is_active)
   end
-  
+
 end
