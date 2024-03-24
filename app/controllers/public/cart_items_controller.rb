@@ -1,8 +1,9 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :destroy_unauthorized_cart_items, only: [:index]
 
   def index
-    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @cart_items = current_user_cart_items
   end
 
   def update
@@ -35,6 +36,19 @@ class Public::CartItemsController < ApplicationController
   private
     def cart_item_matched_id
       CartItem.find(params[:id])
+    end
+
+    def current_user_cart_items
+      CartItem.where(customer_id: current_customer.id).select { |cart_item| cart_item.item.is_active == true }
+    end
+
+    def destroy_unauthorized_cart_items
+      unauthorized_cart_items = CartItem.where(customer_id: current_customer.id).select { |cart_item| cart_item.item.is_active == false }
+      if unauthorized_cart_items.present?
+        unauthorized_cart_items.each do |cart_item|
+          cart_item.destroy
+        end
+      end
     end
 
     def cart_item_params
