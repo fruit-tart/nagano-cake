@@ -3,7 +3,7 @@
 ja:
   activerecord:
     attributes:
-      user:
+      common_attributes: &common_attributes
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -27,8 +27,13 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      customer:
+        <<: *common_attributes
+      admin:
+        <<: *common_attributes
     models:
-      user: ユーザー
+      customer: 会員
+      admin: 管理者
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
