@@ -24,7 +24,7 @@
                 <%= link_to item_path(cart_item.item_id), class: "text-dark" do %>
                   <div class="d-flex align-items-center">
                     <div class="cart-item-thumbnail mr-2">
-                      <%= image_tag cart_item.item.image %>
+                      <%= image_tag cart_item.item.get_image %>
                     </div>
                     <%= cart_item.item.name %>
                   </div>
