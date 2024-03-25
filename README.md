@@ -1,24 +1,36 @@
-# README
+![ながのCAKEロゴ](nagano-cake/app/assets/images/logo_nagano-cake.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ながのCAKE
 
-Things you may want to cover:
+##　サイト概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイトです。
 
-* Ruby version
+##　通販について
+* 通販では注文に応じて製作する受注生産型としています。
+* 現在通販での注文量は十分に対応可能な量のため、1日の受注量に制限は設けていません。
+* 送料は1配送につき全国一律800円です。
+* 友人や家族へのプレゼントなど、注文者の住所以外にも商品を発送できます。
+* 支払方法はクレジットカード、銀行振込から選択できます。
 
-* System dependencies
+##　実装機能
+####　顧客側
+| 機能          | 説明                                             | 非ログイン時  利用可否 |
+|--------------|--------------------------------------------------|-|
+| ログイン機能  | メールアドレス、パスワードでログインできる  ログイン時のみ利用できる機能が利用できるようになる。||
+| ログアウト機能  | ログインしている状態からログアウト状態にする。  ログイン時のみ利用できる機能が利用できなくなる。||
+| 商品一覧表示機能  | 商品を一覧表示する。  検索結果を表示する場合は、検索条件に当てはまる商品のみ一覧表示する。 ||
+| 商品詳細情報表示機能 | 商品一覧画面で選択した商品の詳細情報を表示する。  カート追加機能が表示されている。 ||
+| カート追加機能 | カートに商品を追加することができる。 ||
 
-* Configuration
+####　管理者側
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##　使用方法
+##　開発環境
+##　インストール方法
+##　テスト方法
+##　作者
+* 井上陽暉
+* 尾上瑞樹
+* 清水智義
+* 坂本桃花
