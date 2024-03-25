@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
+  before_action :prohibit_multiple_login, if: :customer_signed_in?
   before_action :authenticate_admin!, except: :root
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -25,7 +26,6 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
 
   def after_sign_in_path_for(resource)
     flash[:notice]="successfully"
@@ -36,5 +36,8 @@ class Admin::SessionsController < Devise::SessionsController
     flash[:notice]="see you"
     new_admin_session_path
   end
-  
+
+  def prohibit_multiple_login
+    redirect_to root_path
+  end
 end
