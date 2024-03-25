@@ -1,4 +1,5 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!, except: :root
   def top
   #日付検索メソッド
    if params[:start_date].present? && params[:end_date].present?

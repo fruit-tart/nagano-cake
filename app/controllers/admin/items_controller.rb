@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!, except: :root
   def index
     if params[:search].present?
       @items = Item.where("name LIKE ?", "%#{params[:search]}%").page(params[:page]) if params[:search].present?
