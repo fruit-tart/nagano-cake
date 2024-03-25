@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!, except: :root
+  
   def index
     if params[:search].present?
       @customers = Customer.select { |customer| customer.admin_side_fullname.include?(params[:search]) }.page(params[:page])

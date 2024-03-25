@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::RegistrationsController < Devise::RegistrationsController
-   before_action :authenticate_admin!, except: [:top, :about]
+   before_action :authenticate_admin!, except: :root
    before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :configure_account_update_params, only: [:update]
 
