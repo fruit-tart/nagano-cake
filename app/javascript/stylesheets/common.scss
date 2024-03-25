@@ -6,6 +6,7 @@
   --color-gold: #a28557;
   --color-secondary: #6C757D;
   --color-danger: #dc3545;
+  --color-dark: #454d55;
   --color-text: #192323;
   --color-bg: #f3f2ee;
 
@@ -209,6 +210,10 @@ header{
 .cart-head{
   background-color: rgba(0, 0, 0, .05);
 }
+.cart-head.table-admin{
+  background-color: var(--color-dark);
+  color: #FFF;
+}
 .cart-item-thumbnail{
   width: 4rem;
   height: 4rem;
@@ -255,6 +260,10 @@ header{
   }
   .cart-body > tr > th {
     background-color: rgba(0, 0, 0, .05);
+  }
+  .cart-body.table-admin > tr > th {
+    background-color: var(--color-dark);
+    color: #FFF;
   }
   .align-middle{
     display: flex;
