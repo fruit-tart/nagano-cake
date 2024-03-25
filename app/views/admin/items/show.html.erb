@@ -1,14 +1,12 @@
 <div class ="container">
-  
   <div class ="row">
     <h1>商品詳細</h1>
   </div>
-  
   <div class ="row">
-    <div class ="col-4">
-      <%= image_tag @item.image,size: '360x270' %>
+    <div class ="col-md-4 col-sm-12 text-center mb-sm-3" %>
+      <%= image_tag @item.image,size: '360x270', class: "img-fluid"  %>
     </div>
-    <div class ="col-8">
+    <div class ="col-md-8 col-sm-12">
       <table class='table'>
         <tr>
 	        <th>商品名</th>
@@ -23,25 +21,28 @@
 	        <td><%= @item.genre.name %></td>
         </tr>
         <tr>
-	        <th>税込価格(税抜価格)</th>
-	        <td><%= price_include_tax(@item.price).to_s(:delimited) %>円
-	            (<%= @item.price.to_s(:delimited) %>円)</td>
+	      <th>税込価格(税抜価格)</th>
+	      <td>
+	        <%= price_include_tax(@item.price).to_s(:delimited) %>円
+	        (<%= @item.price.to_s(:delimited) %>円)
+	      </td>
         </tr>
         <tr>
 	        <th>販売ステータス</th>
-	        <td><% if @item.is_active %>
-             <p class="text-success"><strong>販売中</strong></p>
-               <% elsif %>
-             <p class="text-muted"><strong>販売停止</strong></p>
-              <% end %></td>
-          </tr>
+	        <td>
+	          <% if @item.is_active %>
+              <p class="text-success"><strong>販売中</strong></p>
+            <% elsif %>
+              <p class="text-muted"><strong>販売停止</strong></p>
+            <% end %>
+          </td>
+        </tr>
       </table>
       <div style="margin: 0 auto; width: fit-content;">
         <%= link_to edit_admin_item_path(@item), class: "ml-auto btn btn-success edit_admin_item_#{@item.id}" do %>
-         編集する
+          編集する
         <% end %>
       </div>
     </div>
   </div>
-
 </div>
