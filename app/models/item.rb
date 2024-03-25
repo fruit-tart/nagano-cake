@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   #バリテーション※販売ステータスが出来次第追加
   validates :name, uniqueness: true, presence: true
   validates :introduction, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, length: { maximum: 255 }, format: {with: /\A\d*\z/} 
   validates :genre, presence: true
   
   def status

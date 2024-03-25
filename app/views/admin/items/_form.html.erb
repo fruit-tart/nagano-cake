@@ -18,12 +18,14 @@
     </tr>
     <tr>
       <th>税抜価格</th>
-      <td><%= f.text_field :price, class: "form-control price" %>円</td>
+      <td><%= f.text_field :price, pattern:"[0-9]*", class: "form-control price" %>円</td>
     </tr>
     <tr>
       <th>販売ステータス</th>
-      <td>  <%= f.radio_button :is_active, "true" %>販売中<br>
-            <%= f.radio_button :is_active, "false" %>販売停止中<td>
+      <td>
+        <%= f.radio_button :is_active, "true" %>販売中<br>
+        <%= f.radio_button :is_active, "false" %>販売停止中
+      <td>
     </tr>
     <tr align="center">
       <th>
