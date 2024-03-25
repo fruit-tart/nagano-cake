@@ -1,8 +1,3 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap" rel="stylesheet">
-<style>
-/* root */
 :root {
   --font-family-sans-serif: "Arial", 'BIZ UDGothic', "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
   --font-family-serif: "Times New Roman", "Hiragino Mincho ProN", "YuMincho", "Yu Mincho", serif;
@@ -10,6 +5,7 @@
 
   --color-gold: #a28557;
   --color-secondary: #6C757D;
+  --color-danger: #dc3545;
   --color-text: #192323;
   --color-bg: #f3f2ee;
 
@@ -136,7 +132,7 @@ header{
     margin: -3rem 1rem 0 auto;
   }
 }
-/* 商品カード整列（public共通） */
+/* 商品カード（public共通） */
 .wrap-items{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -146,6 +142,16 @@ header{
   .wrap-items{
     grid-template-columns: repeat(4, 1fr);
   }
+}
+.wrap-item-card-img{
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.wrap-item-card-img > img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 /* 見出し（public共通） */
 .text-heading {
@@ -186,6 +192,18 @@ header{
 .text-price-include-tax::after{
   content: "(税込)";
   font-size: 0.625em;
+}
+/* リスト（public共通） */
+.list-customer-data{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2em;
+}
+.list-customer-data > dt{
+  grid-column: 1;
+}
+.list-customer-data > dd{
+  grid-column: 2;
 }
 /* カート（public/cart_items） */
 .cart-head{
@@ -256,18 +274,6 @@ header{
     padding-right: 1.5rem;
   }
 }
-/* プロフィール */
-.list-customer-data{
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 2em;
-}
-.list-customer-data > dt{
-  grid-column: 1;
-}
-.list-customer-data > dd{
-  grid-column: 2;
-}
 /* bootstrap使用時のformエラー時のレイアウト崩れ回避 */
 .field_with_errors{
   display: contents;
@@ -302,4 +308,8 @@ footer{
   font-size: 1.5em;
   margin-right: 0.25em;
 }
-</style>
+/* エラーメッセージ（共通） */
+#error_explanation,
+.flash-message.alert{
+  color: var(--color-danger);
+}

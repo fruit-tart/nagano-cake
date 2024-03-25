@@ -1,48 +1,46 @@
-<%= form_with(url: admin_items_path, method: "get") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search items..." %>
-  <%= submit_tag "Search" %>
-<% end %>
-
 <div class="container">
-  
+
   <div class="row">
-    <h1>商品一覧</h1>
-    <h2>
-      <%= link_to new_admin_item_path, size:100 do %>
-      <i class="fa-solid fa-square-plus"></i>
-      <% end %>
-    </h2>
+    <h1><%= @heading %></h1>
+    <%= link_to new_admin_item_path, size:100 do %>
+      <i class="h2 fa-solid fa-square-plus"></i>
+    <% end %>
   </div>
-  
+
   <div class="row">
-    <table class="table">
-       <thead class="table-dark">
-        <tr align="center">
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税抜価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-       <tbody>
-        <% @items.each do |item| %>
+    <div class="col">
+      <table class="table">
+         <thead class="table-dark">
           <tr align="center">
-            <td><%= item.id %></td>
-            <td>
-              <%= link_to item.name, admin_item_path(item) %>
-            </td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
-            <td><% if item.is_active %>
-                  <p class="text-success"><strong>販売中</strong></p>
-                <% elsif %>
-                  <p class="text-muted"><strong>販売停止</strong></p>
-                <% end %></td>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+         </thead>
+         <tbody>
+          <% @items.each do |item| %>
+            <tr align="center">
+              <td><%= item.id %></td>
+              <td>
+                <%= link_to item.name, admin_item_path(item) %>
+              </td>
+              <td><%= item.price %></td>
+              <td><%= item.genre.name %></td>
+              <td><% if item.is_active %>
+                    <p class="text-success"><strong>販売中</strong></p>
+                  <% elsif %>
+                    <p class="text-muted"><strong>販売停止</strong></p>
+                  <% end %></td>
+            </tr>
+          <% end %>
+         </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <%= paginate @items %>
+      </div>
+    </div>
   </div>
-  
+
 </div>

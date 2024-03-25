@@ -1,8 +1,12 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
-    #↓会員氏名検索機能のメソッド
-    @customers = @customers.select { |customer| customer.admin_side_fullname.include?(params[:search]) } if params[:search].present?
+    if params[:search].present?
+      @customers = Customer.select { |customer| customer.admin_side_fullname.include?(params[:search]) }.page(params[:page])
+      @heading = "「#{params[:search]}」の検索結果"
+    else
+      @customers = Customer.all.page(params[:page])
+      @heading = "会員一覧"
+    end
   end
 
   def show
@@ -12,7 +16,7 @@ class Admin::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
@@ -22,6 +26,11 @@ class Admin::CustomersController < ApplicationController
     end
   end
   
+  def orders
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders.order(created_at: :desc)
+  end
+
   private
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, :is_active)

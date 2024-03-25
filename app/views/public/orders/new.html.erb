@@ -25,6 +25,11 @@
 
         <div class="card shadow-sm mb-4">
           <div class="card-header font-weight-bold">お届け先</div>
+          <% flash.each do |message_type, message| %>
+            <% if flash[:alert] %>
+              <div class="flash-message m-0 <%= message_type %>"><%= message %></div>
+            <% end %>
+          <% end %>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <div class="form-group">
