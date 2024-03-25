@@ -144,7 +144,7 @@ initial_genres = [
 ]
 Genre.create(initial_genres)
 
-initial_items = initial_items = [
+initial_items = [
   {
     genre_id: 1,
     name: "いちごのデコレーションケーキ（ホール）",
@@ -208,6 +208,48 @@ initial_items = initial_items = [
     price: 2500,
     is_active: false
   },
+  {
+    genre_id: 3,
+    name: "オレンジマフィン",
+    introduction: "オレンジの爽やかな風味が香るふわふわのマフィンです。朝食やおやつにぴったりです。",
+    price: 220,
+    is_active: true
+  },
+  {
+    genre_id: 1,
+    name: "オレンジケーキ",
+    introduction: "オレンジの風味が広がる爽やかなケーキです。一口食べると心地よい甘さが広がります。",
+    price: 380,
+    is_active: true
+  },
+  {
+    genre_id: 3,
+    name: "いちごマカロン",
+    introduction: "フレッシュないちごがたっぷり詰まった、軽やかで甘いマカロンです。色鮮やかで美しい一品です。",
+    price: 200,
+    is_active: true
+  },
+  {
+    genre_id: 1,
+    name: "ベリーケーキ",
+    introduction: "ベリーの豊かな風味が楽しめる華やかなケーキです。フルーティーな甘さが魅力です。",
+    price: 420,
+    is_active: true
+  },
+  {
+    genre_id: 1,
+    name: "チョコレートケーキ",
+    introduction: "濃厚なチョコレートケーキです。口の中で溶けるような美味しさが特徴です。",
+    price: 500,
+    is_active: true
+  },
+  {
+    genre_id: 1,
+    name: "デラックスながのケーキ（ホール）",
+    introduction: "季節のフルーツがたっぷりと使われた贅沢なホールケーキです。みずみずしいフルーツの風味が広がります。",
+    price: 6000,
+    is_active: true
+  }
 ]
 initial_items.each.with_index(1) do |item, i|
   new_item = Item.create!(item)
@@ -460,7 +502,7 @@ OrderDetail.create(initial_order_details)
 initial_addresses = [
   {
     customer_id: 1,
-    name: "職場",
+    name: "一ノ瀬孝弘",
     postal_code: 1310045,
     address: "東京都墨田区押上1丁目1-2",
   }

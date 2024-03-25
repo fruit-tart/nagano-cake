@@ -6,12 +6,15 @@
     <div class="col-lg-9">
       <section class="mb-4">
         <h2 class="public-common-heading" data-text-en="Items">
-          <%= @collection_title %>（全<%= @collection.count %>件）
+          <%= @collection_title %>（全<%= @collection_all.count %>件）
         </h2>
         <div class="wrap-items">
           <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
         </div>
       </section>
+      <div class="d-flex justify-content-center">
+        <%= paginate @collection %>
+      </div>
     </div>
   </div>
 </div>
