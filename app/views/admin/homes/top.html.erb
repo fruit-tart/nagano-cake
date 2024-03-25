@@ -33,7 +33,7 @@
   <% end %>
   <!-- ここまで -->
   <div class="row">
-    <h1>注文履歴一覧</h1>
+    <h1 class="col-md-10 col-9">注文履歴一覧</h1>
   </div>
   <div class="row">
     <div class="col">
@@ -49,13 +49,9 @@
          <tbody>
           <% @orders.each do |order| %>
           <tr align="center">
-            <td>
-              <%= link_to l(order.created_at),admin_order_path(order) %>
-            </td>
+            <td><%= link_to l(order.created_at),admin_order_path(order) %></td>
             <td><%= order.name %></td>
-            <td>
-              <%= order.order_details.sum(:amount) %>
-            </td>
+            <td><%= order.order_details.sum(:amount) %></td>
             <td><%= order.status_i18n %></td>
           </tr>
           <% end %>
