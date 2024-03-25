@@ -37,7 +37,7 @@
                 <%= form.label :select_address_0, "ご自身の住所", class: "m-0" %>
               </div>
               <div class="form-group ml-4">
-                <span>〒<%= current_customer.postal_code %></span><br>
+                <span>〒<%= format_postal_code(current_customer.postal_code) %></span><br>
                 <span><%= current_customer.address %></span><br>
                 <span><%= current_customer.last_name %><%= current_customer.first_name %></span>
               </div>
