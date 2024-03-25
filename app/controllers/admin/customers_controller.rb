@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
   def index
     if params[:search].present?
-      @customers = Customer.select { |customer| customer.admin_side_fullname.include?(params[:search]) }.page(params[:page])
+      search_customers = Customer.select { |customer| customer.admin_side_fullname.include?(params[:search]) }
+      @customers = Kaminari.paginate_array(search_customers).page(params[:page])
       @heading = "「#{params[:search]}」の検索結果"
     else
       @customers = Customer.all.page(params[:page])

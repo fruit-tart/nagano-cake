@@ -1,12 +1,12 @@
 <div class="container">
-
   <div class="row">
-    <h1><%= @heading %></h1>
-    <%= link_to new_admin_item_path, size:100 do %>
-      <i class="h2 fa-solid fa-square-plus"></i>
-    <% end %>
+    <h1 class="col-10"><%= @heading %></h1>
+    <div class="col-2 text-right">
+      <%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-square-plus fa-3x"></i>
+      <% end %>
+    </div>
   </div>
-
   <div class="row">
     <div class="col">
       <table class="table">
@@ -28,11 +28,13 @@
               </td>
               <td><%= item.price %></td>
               <td><%= item.genre.name %></td>
-              <td><% if item.is_active %>
-                    <p class="text-success"><strong>販売中</strong></p>
-                  <% elsif %>
-                    <p class="text-muted"><strong>販売停止</strong></p>
-                  <% end %></td>
+              <td>
+                <% if item.is_active %>
+                  <p class="text-success"><strong>販売中</strong></p>
+                <% elsif %>
+                  <p class="text-muted"><strong>販売停止</strong></p>
+                <% end %>
+              </td>
             </tr>
           <% end %>
          </tbody>
@@ -42,5 +44,4 @@
       </div>
     </div>
   </div>
-
 </div>
