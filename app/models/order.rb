@@ -19,9 +19,8 @@ class Order < ApplicationRecord
   def update_making_status
     if status == 'paid_up' && order_details.present?
       order_details.each do |order_detail|
-      order_detail.update(making_status: 'waiting')
+        order_detail.update(making_status: 'waiting')
       end
     end
   end
-  
 end
