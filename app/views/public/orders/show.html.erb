@@ -12,7 +12,7 @@
             <dd><%= @order.created_at.strftime("%Y/%-m/%-d") %></dd>
             <dt>配送先</dt>
             <dd>
-              <span>〒<%= @order.postal_code %></span><br>
+              <span>〒<%= format_postal_code(@order.postal_code) %></span><br>
               <span><%= @order.address %></span><br>
               <span><%= @order.name %>様</span>
             </dd>

@@ -77,7 +77,7 @@
           お届け先
         </div>
         <div class="card-body">
-          <span>〒<%= @order.postal_code %></span><br>
+          <span>〒<%= format_postal_code(@order.postal_code) %></span><br>
           <span><%= @order.address %></span><br>
           <span><%= @order.name %></span>
         </div>
