@@ -3,7 +3,7 @@ class Admin::GenresController < ApplicationController
   before_action :set_genre, only: [:edit, :update]
   
   def index
-    @genres = Genre.all.page(params[:page])
+    @genres = Genre.page(params[:page])
     @genre = Genre.new
   end
 
@@ -16,7 +16,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "successfully created."
       redirect_to admin_genres_path
     else
-      @genres = Genre.all
+      @genres = Genre.page(params[:page])
       flash[:alert] = "error"
       render :index
     end

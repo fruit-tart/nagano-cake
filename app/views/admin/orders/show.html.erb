@@ -1,43 +1,46 @@
 <div class="container">
   <div class="row">
-    <h1>注文履歴詳細</h1>
-    <table>
-      <tr>
-    	  <th>購入者</th>
-    	  <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
-      </tr>
-      <tr>
-    	  <th>注文日</th>
-    	  <td><%= l(@order.created_at) %></td>
-      </tr>
-      <tr>
-        <th>配送先</th>
-    	  <td>〒<%= format_postal_code(@order.postal_code) %><br>
-    	      <%= @order.name %></td>
-    	  <td><%= @order.address %></td>
-    	  <td></td>
-      </tr>
-      <tr>
-        <th>支払方法</th>
-    	  <td><%= @order.payment_method_i18n %></td>
-      </tr>
-      <tr>
-        <th>注文ステータス</th>
-        <td>
-        <%= form_with(model: @order, url: admin_order_path(@order.id), local: true) do |f| %>
-          <%= f.select :status, Order.statuses_i18n.map { |key, value| [value, key] } %>
-          <%= f.submit "更新" , class: "btn btn-success" %>
-        <% end %>
-        </td>
-      </tr>
-    </table>
+    <h1 class="col-md-10 col-9">注文履歴詳細</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table m-0">
+        <tr>
+      	  <th>購入者</th>
+      	  <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+        </tr>
+        <tr>
+      	  <th>注文日</th>
+      	  <td><%= l(@order.created_at) %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+      	  <td>〒<%= format_postal_code(@order.postal_code) %> <%= @order.address %><br>
+      	      <%= @order.name %></td>
+      	  <td></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+      	  <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+          <%= form_with(model: @order, url: admin_order_path(@order.id), local: true) do |f| %>
+            <%= f.select :status, Order.statuses_i18n.map { |key, value| [value, key] } %>
+            <%= f.submit "更新" , class: "btn btn-success" %>
+          <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
   
   <div class="row">
-    <div class="col-9">
-      <table class="table" style="font-size: 15pt">
+    <div class="col-md-9 mb-6">
+      <table class="table m-0" style="font-size: 15pt">
         <thead class="table-dark">
-          <tr>
+          <tr class="align-bottom nowrap" scope="col">
             <th>商品名</th>
             <th>単価（税込）</th>
             <th>数量</th>
@@ -64,7 +67,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 mb-6">
       <table>
         <tr>
       	  <th>商品合計</th>
