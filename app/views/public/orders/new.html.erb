@@ -61,7 +61,7 @@
               <div class="form-group ml-4">
                 <div class="form-group">
                   <%= form.label :new_postal_code, "郵便番号（ハイフンなし）" %>
-                  <%= form.text_field :postal_code, class: "form-control" %>
+                  <%= form.text_field :postal_code, pattern:"[0-9]{7}", class: "form-control" %>
                 </div>
                 <div class="form-group">
                   <%= form.label :new_address, "住所" %>
