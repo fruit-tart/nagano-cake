@@ -52,7 +52,13 @@ URLを/admin/sign_upにし下記情報でログインしてください。<br>
 パスワード：nagano<br>
 
 #### 【顧客用アカウント】
-新規登録でアカウントを作成してください。
+新規登録でアカウントを作成してください。<br>
+<br>
+※当ページにはFontAwesomeがkitcodeで導入されています。<br>app/views/layouts/application.html.erbの下記の
+`<%= ENV["FONTAWESOME_KEY"] %>`の部分にご自身のkitcodeの値を設定してください。
+````
+<script src="https://kit.fontawesome.com/<%= ENV["FONTAWESOME_KEY"] %>.js" crossorigin="anonymous"></script>
+```` 
 
 ## 開発環境一覧
 | 開発環境           | バージョン/条件                                 | 用途                                           |
