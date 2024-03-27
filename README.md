@@ -47,6 +47,7 @@
 
 ## ログイン方法
 #### 【管理者用アカウント】
+`rails db:seed`で初期設定のデータを読み込んでください。<br>
 URLを/admin/sign_upにし下記情報でログインしてください。<br>
 メールアドレス：nagano@gmail<br>
 パスワード：nagano<br>
