@@ -1,4 +1,4 @@
-![ながのCAKEロゴ](app/assets/images/logo_nagano-cake.png)
+![ながのCAKEロゴ](app/assets/images/logo_nagano-cake-gold.png)
 
 # ながのCAKE
 
