@@ -1,0 +1,40 @@
+<%= form_with(model: item, url: (item.persisted? ? admin_item_path(item) : admin_items_path), local: true) do |f| %>
+  <table class='table'>
+    <tr>
+      <th>商品画像</th>
+  	  <td><%= f.file_field :image, class: "form-control-file itam_image", accept: 'image/*' %></td>
+    </tr>
+    <tr>
+      <th>商品名</th>
+  	  <td><%= f.text_field :name, class: "form-control name" %></td>
+    </tr>
+    <tr>
+      <th>商品説明</th>
+      <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td><%= f.collection_select :genre_id, Genre.all, :id, :name, {}, {class: 'form-control'} %></td>
+    </tr>
+    <tr>
+      <th>税抜価格</th>
+      <td><%= f.text_field :price, pattern:"[0-9]*", class: "form-control price" %>円</td>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <td>
+        <%= f.radio_button :is_active, "true" %>販売中<br>
+        <%= f.radio_button :is_active, "false" %>販売停止中
+      <td>
+    </tr>
+    <tr align="center">
+      <th>
+        <% if item.persisted? %>
+          <%= f.submit "更新する", class: "btn btn-success" %>
+        <% else %>
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        <% end %>
+      </th>
+    </tr>
+ </table>
+<% end %>

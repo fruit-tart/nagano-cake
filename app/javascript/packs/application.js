@@ -7,6 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+//追記
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import Swiper from "swiper/swiper-bundle.js";
+import "swiper/swiper-bundle.css";
+import "script.js";
+import "../stylesheets/application";
+import "../stylesheets/common"
 
 Rails.start()
 Turbolinks.start()

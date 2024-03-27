@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <h2 class="public-common-heading" data-text-en="Edit Address">配送先編集</h2>
+      <%= form_with model: @address, url: address_path, method: :patch do |form| %>
+        <%= render "public/addresses/form", form: form, sublmit_value: "変更内容を保存" %>
+      <% end %>
+    </div>
+  </div>
+</div>

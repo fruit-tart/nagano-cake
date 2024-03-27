@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <h2 class="public-common-heading" data-text-en="Order History">注文履歴一覧</h2>
+      <% @orders.each do |order| %>
+        <div class="card shadow-sm mb-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="m-0 h5 font-weight-bold">
+              <%= order.created_at.strftime("%Y/%-m/%-d") %>
+            </h3>
+            <%= link_to "表示する", order_path(order), class: "btn btn-primary btn-sm" %>
+          </div>
+          <div class="card-body">
+            <dl class="list-customer-data m-0">
+              <dt>配送先</dt>
+              <dd>
+                <span>〒<%= format_postal_code(order.postal_code) %></span><br>
+                <span><%= order.address %></span><br>
+                <span><%= order.name %>様</span>
+              </dd>
+              <dt>支払方法</dt>
+              <dd><%= order.payment_method_i18n %></dd>
+              <dt>注文商品</dt>
+              <dd><%= order.order_details.map{ |order_detail| order_detail.item.name }.join("、") %></dd>
+              <dt>支払金額</dt>
+              <dd>
+                <span class="text-price"><%= order.total_payment.to_s(:delimited) %></span>
+              </dd>
+              <dt>ステータス</dt>
+              <dd><%= order.status_i18n %></dd>
+            </dl>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-3 mb-4">
+      <%= link_to "会員登録情報", customers_my_page_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+      <%= link_to "配送先の管理", addresses_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="public-common-heading" data-text-en="Profile">登録情報</h2>
+        <%= link_to "編集する", customers_information_edit_path, class: "btn btn-success btn-sm mb-2" %>
+      </div>
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <dl class="list-customer-data m-0">
+            <dt>氏名</dt>
+            <dd><%= @customer.fullname %></dd>
+            <dt>カナ</dt>
+            <dd><%= @customer.fullname_kana %></dd>
+            <dt>郵便番号</dt>
+            <dd>〒<%= format_postal_code(@customer.postal_code) %></dd>
+            <dt>住所</dt>
+            <dd><%= @customer.address%></dd>
+            <dt>電話番号</dt>
+            <dd><%= @customer.telephone_number %></dd>
+            <dt>メールアドレス</dt>
+            <dd><%= @customer.email %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-3 mb-4">
+      <%= link_to "配送先の管理", addresses_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+      <%= link_to "注文履歴", orders_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 order-lg-0 order-1">
+      <%= render "public/items/genre_search", items: @items, genres: @genres %>
+    </div>
+    <div class="col-lg-9">
+      <section class="wrap-cover mb-4">
+        <!-- swiper -->
+        <div class="swiper" slides-per-view="auto" centered-slides="true">
+          <!-- スライド -->
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+               <%= image_tag 'top_slider_01.jpg' %>
+            </div>
+            <div class="swiper-slide">
+               <%= image_tag 'top_slider_02.jpg' %>
+            </div>
+            <div class="swiper-slide">
+               <%= image_tag 'top_slider_03.jpg' %>
+            </div>
+          </div>
+          <!-- ナビゲーションボタン -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        <div class="wrap-introduction bg-white shadow-sm">
+          <h2 class="text-heading h3">ようこそ、<wbr>ながのCAKEへ！</h2>
+          <div>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            <small>※会員でない方も商品の閲覧はできますが、購入には<%= link_to "会員登録", new_customer_registration_path %>が必要になります。</small>
+          </div>
+        </div>
+      </section>
+      <section class="mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="public-common-heading" data-text-en="New Items">新着商品</h2>
+          <%= link_to "一覧へ", items_path, class: "btn btn-primary btn-sm mb-2" %>
+        </div>
+        <div class="wrap-items">
+          <%= render partial: "public/items/summary", collection: @collection, as: "item" %>
+        </div>
+        <%= link_to "", items_path %>
+      </section>
+    </div>
+  </div>
+</div>

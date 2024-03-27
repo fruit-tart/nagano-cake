@@ -6,11 +6,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/<%= ENV["FONTAWESOME_KEY"] %>.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Headland+One&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <header class="bg-white shadow-sm mb-4">
+      <%= render 'layouts/header' %>
+    </header>
+    <main class="my-4">
+      <%= yield %>
+    </main>
+    <footer class="py-4">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

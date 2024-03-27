@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="public-common-heading" data-text-en="Order">注文情報入力</h2>
+      </div>
+      <%= form_with model: @new_order, url: confirm_orders_path(@new_order), method: :post, local: true do |form| %>
+        <div class="card shadow-sm mb-4">
+          <div class="card-header font-weight-bold">支払方法</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="form-group m-0">
+                <%= form.radio_button :payment_method, :credit_card, checked: true %>
+                <%= form.label :payment_method_credit_card, "クレジットカード", class: "m-0" %>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="form-group m-0">
+                <%= form.radio_button :payment_method, :transfer %>
+                <%= form.label :payment_method_transfer, "銀行振込", class: "m-0" %>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card shadow-sm mb-4">
+          <div class="card-header font-weight-bold">お届け先</div>
+          <% flash.each do |message_type, message| %>
+            <% if flash[:alert] %>
+              <div class="flash-message m-0 <%= message_type %>"><%= message %></div>
+            <% end %>
+          <% end %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="form-group">
+                <%= form.radio_button :select_address, 0, checked: true %>
+                <%= form.label :select_address_0, "ご自身の住所", class: "m-0" %>
+              </div>
+              <div class="form-group ml-4">
+                <span>〒<%= format_postal_code(current_customer.postal_code) %></span><br>
+                <span><%= current_customer.address %></span><br>
+                <span><%= current_customer.last_name %><%= current_customer.first_name %></span>
+              </div>
+            </li>
+            <% if current_customer.addresses.present? %>
+              <li class="list-group-item">
+                <div class="form-group">
+                  <%= form.radio_button :select_address, 1 %>
+                  <%= form.label :select_address_1, "登録済住所から選択", class: "m-0" %>
+                </div>
+                <div class="form-group ml-4">
+                  <%= form.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display), {include_blank: false}, class: "form-control" %>
+                </div>
+              </li>
+            <% end %>
+            <li class="list-group-item">
+              <div class="form-group">
+                <%= form.radio_button :select_address, 2 %>
+                <%= form.label :select_address_2, "新しいお届け先", class: "m-0" %>
+              </div>
+              <div class="form-group ml-4">
+                <div class="form-group">
+                  <%= form.label :new_postal_code, "郵便番号（ハイフンなし）" %>
+                  <%= form.text_field :postal_code, pattern:"[0-9]{7}", class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :new_address, "住所" %>
+                  <%= form.text_field :address, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= form.label :new_name, "宛名" %>
+                  <%= form.text_field :name, class: "form-control" %>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-row justify-content-center">
+          <div class="col-md-6 mb-4">
+            <%= form.submit "確認画面へ進む", class: "btn btn-success btn-lg btn-block" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="container">
+  <h2 class="public-common-heading" data-text-en="Order Details">注文履歴詳細</h2>
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">
+          <h3 class="m-0 h6 font-weight-bold">注文情報</h3>
+        </div>
+        <div class="card-body">
+          <dl class="list-customer-data m-0">
+            <dt>注文日</dt>
+            <dd><%= @order.created_at.strftime("%Y/%-m/%-d") %></dd>
+            <dt>配送先</dt>
+            <dd>
+              <span>〒<%= format_postal_code(@order.postal_code) %></span><br>
+              <span><%= @order.address %></span><br>
+              <span><%= @order.name %>様</span>
+            </dd>
+            <dt>支払方法</dt>
+            <dd><%= @order.payment_method_i18n %></dd>
+            <dt>ステータス</dt>
+            <dd><%= @order.status_i18n %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-header">
+          <h3 class="m-0 h6 font-weight-bold">請求情報</h3>
+        </div>
+        <div class="card-body">
+          <dl class="list-customer-data m-0">
+            <dt class="align-self-end mb-2">商品合計</dt>
+            <dd>
+              <span class="text-price h4 m-0">
+                <%= @order.order_details.inject(0) {|sum, order_detail| sum + (order_detail.price * order_detail.amount)}.to_s(:delimited) %>
+              </span>
+            </dd>
+            <dt class="align-self-end mb-2">配送料</dt>
+            <dd>
+              <span class="text-price h4 m-0">
+                <%= @order.shipping_cost.to_s(:delimited) %>
+              </span>
+            </dd>
+            <dt class="align-self-end mb-2">ご請求額</dt>
+            <dd>
+              <span class="text-price h3 m-0">
+                <%= @order.total_payment.to_s(:delimited) %>
+              </span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="card shadow-sm">
+        <table class="table m-0">
+          <thead class="cart-head">
+            <tr>
+              <th class="align-bottom nowrap" scope="col">商品名</th>
+              <th class="align-bottom nowrap" scope="col">単価<small>（税込）</small></th>
+              <th class="align-bottom nowrap" scope="col">数量</th>
+              <th class="align-bottom nowrap" scope="col">小計</th>
+            </tr>
+          </thead>
+          <tbody class="cart-body">
+            <% @order.order_details.each do |order_detail| %>
+              <tr>
+                <th class="align-middle">
+                  <%= order_detail.item.name %>
+                </th>
+                <td class="align-middle" data-title="単価（税込）">
+                  <%= order_detail.price.to_s(:delimited) %>
+                </td>
+                <td class="align-middle" data-title="数量">
+                  <%= order_detail.amount %>
+                </td>
+                <td class="align-middle"data-title="小計">
+                  <%= (order_detail.price * order_detail.amount).to_s(:delimited) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6 mb-4">
+      <%= link_to "注文履歴一覧へ戻る", orders_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+</div>
